@@ -1,0 +1,30 @@
+$--header-color: #003973;
+$--header-height: 58px;
+.customer-navbar {
+  background-color: $--header-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: $--header-height;
+  line-height: unset;
+
+  .navbar-title {
+    >a {
+      color: white !important;
+      margin-left: 10px;
+      font-size: 18px;
+      font-weight: bolder;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+
+    a {
+      color: white;
+      margin-left: 15px;
+    }
+  }
+}
