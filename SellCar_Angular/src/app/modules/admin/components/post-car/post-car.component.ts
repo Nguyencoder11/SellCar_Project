@@ -8,6 +8,9 @@ import {NgForOf, NgIf} from '@angular/common';
 import {NzInputDirective} from 'ng-zorro-antd/input';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NzDatePickerComponent} from 'ng-zorro-antd/date-picker';
+import {AdminService} from '../../services/admin.service';
+import {NzMessageService} from 'ng-zorro-antd/message';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post-car',
@@ -41,7 +44,10 @@ export class PostCarComponent {
   listOfColor: string[] = ["Red", "White", "Blue", "Black", "Orange", "Grey", "Silver"];
   listOfTransmission: string[] = ["Manual", "Automatic"];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private adminService: AdminService,
+              private message: NzMessageService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -59,9 +65,10 @@ export class PostCarComponent {
 
   postCar() {
     console.log(this.postCarForm.value)
+    this.isSpinning = true
     const formData: FormData = new FormData()
     if(this.selectedFile) {
-      formData.append('img', this.selectedFile)
+      formData.append('image', this.selectedFile)
     }
     formData.append('brand', this.postCarForm.get('brand')!.value)
     formData.append('name', this.postCarForm.get('name')!.value)
@@ -72,6 +79,14 @@ export class PostCarComponent {
     formData.append('description', this.postCarForm.get('description')!.value)
     formData.append('price', this.postCarForm.get('price')!.value)
     console.log(formData)
+    this.adminService.postCar(formData).subscribe((res) => {
+      this.isSpinning = false
+      this.message.success("Car posted successfully", {nzDuration: 5000})
+      this.router.navigateByUrl("/admin/dashboard")
+      console.log(res)
+    }, error => {
+      this.message.error("Error while posting car",{nzDuration: 5000})
+    })
   }
 
   onFileSelected(event: any) {
