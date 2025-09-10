@@ -37,7 +37,7 @@ export class LoginComponent {
     console.log(this.loginForm.value)
     this.authService.login(this.loginForm.value).subscribe((res) => {
       console.log(res)
-      if (res.id != null) {
+      if (res.userId != null) {
         const user = {
           id: res.userId,
           role: res.userRole
@@ -51,7 +51,11 @@ export class LoginComponent {
         } else {
           this.message.error("Bad credentials", {nzDuration: 50000})
         }
+      } else {
+        this.message.error("Login failed", { nzDuration: 5000 })
       }
+    }, error => {
+      this.message.error("Login error: " + error.message, { nzDuration: 5000 })
     })
   }
 }

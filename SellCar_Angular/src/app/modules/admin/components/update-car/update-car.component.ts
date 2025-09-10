@@ -37,7 +37,7 @@ import {NzButtonComponent} from 'ng-zorro-antd/button';
 export class UpdateCarComponent {
 
   isSpinning = false
-  carId!: number;
+  carId!: number
   imgChanged: boolean =  false
   selectedFile: any
   imagePreview!: string | ArrayBuffer | null

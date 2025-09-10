@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NzSpinComponent} from 'ng-zorro-antd/spin';
 import {NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent} from 'ng-zorro-antd/form';
-import {NgForOf} from '@angular/common';
+import {CommonModule, NgForOf} from '@angular/common';
 import {NzOptionComponent, NzSelectComponent} from 'ng-zorro-antd/select';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {AdminService} from '../../services/admin.service';
@@ -22,7 +22,8 @@ import {NzColDirective, NzRowDirective} from 'ng-zorro-antd/grid';
     NzOptionComponent,
     NzButtonComponent,
     NzRowDirective,
-    NzColDirective
+    NzColDirective,
+    CommonModule
   ],
   templateUrl: './search-car.component.html',
   styleUrl: './search-car.component.scss'
@@ -60,5 +61,10 @@ export class SearchCarComponent {
       })
       this.isSpinning = false
     })
+  }
+
+  clearSearch() {
+    this.searchCarForm.reset()
+    this.cars = []
   }
 }

@@ -73,11 +73,11 @@ export class PostCarComponent {
     formData.append('brand', this.postCarForm.get('brand')!.value)
     formData.append('name', this.postCarForm.get('name')!.value)
     formData.append('type', this.postCarForm.get('type')!.value)
+    formData.append('transmission', this.postCarForm.get('transmission')!.value)
     formData.append('color', this.postCarForm.get('color')!.value)
     formData.append('year', this.postCarForm.get('year')!.value)
-    formData.append('transmission', this.postCarForm.get('transmission')!.value)
-    formData.append('description', this.postCarForm.get('description')!.value)
     formData.append('price', this.postCarForm.get('price')!.value)
+    formData.append('description', this.postCarForm.get('description')!.value)
     console.log(formData)
     this.adminService.postCar(formData).subscribe((res) => {
       this.isSpinning = false

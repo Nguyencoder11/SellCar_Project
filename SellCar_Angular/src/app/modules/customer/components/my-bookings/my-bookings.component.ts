@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {CustomerService} from '../../services/customer.service';
 import {NzSpinComponent} from 'ng-zorro-antd/spin';
 import {NzTableComponent} from 'ng-zorro-antd/table';
-import {NgForOf, NgStyle} from '@angular/common';
+import {CommonModule, NgForOf, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-my-bookings',
@@ -11,7 +11,8 @@ import {NgForOf, NgStyle} from '@angular/common';
     NzSpinComponent,
     NzTableComponent,
     NgForOf,
-    NgStyle
+    NgStyle,
+    CommonModule
   ],
   templateUrl: './my-bookings.component.html',
   styleUrl: './my-bookings.component.scss'

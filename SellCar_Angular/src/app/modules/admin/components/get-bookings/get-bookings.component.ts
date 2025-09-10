@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {AdminService} from '../../services/admin.service';
 import {NzSpinComponent} from 'ng-zorro-antd/spin';
 import {NzTableComponent} from 'ng-zorro-antd/table';
-import {NgForOf, NgIf} from '@angular/common';
+import {CommonModule, NgForOf, NgIf} from '@angular/common';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {Observable} from 'rxjs';
 import {NzMessageService} from 'ng-zorro-antd/message';
@@ -15,7 +15,8 @@ import {NzMessageService} from 'ng-zorro-antd/message';
     NzTableComponent,
     NgForOf,
     NgIf,
-    NzButtonComponent
+    NzButtonComponent,
+    CommonModule,
   ],
   templateUrl: './get-bookings.component.html',
   styleUrl: './get-bookings.component.scss'

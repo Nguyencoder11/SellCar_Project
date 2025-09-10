@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {CustomerService} from '../../services/customer.service';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AdminService} from '../../../admin/services/admin.service';
-import {NgForOf} from '@angular/common';
+import {CommonModule, NgForOf} from '@angular/common';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzColDirective, NzRowDirective} from 'ng-zorro-antd/grid';
 import {NzFormControlComponent, NzFormItemComponent, NzFormLabelComponent} from 'ng-zorro-antd/form';
@@ -23,7 +23,8 @@ import {NzSpinComponent} from 'ng-zorro-antd/spin';
     NzRowDirective,
     NzSelectComponent,
     NzSpinComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   standalone: true,
   templateUrl: './search-car.component.html',

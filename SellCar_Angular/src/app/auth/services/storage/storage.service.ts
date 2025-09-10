@@ -14,12 +14,14 @@ export class StorageService {
   static saveToken(token: string):void {
     window.localStorage.removeItem(TOKEN)
     window.localStorage.setItem(TOKEN, token)
+    console.log("Received Token: ", token)
   }
 
   // luu tru thong tin user
   static saveUser(user: any):void {
     window.localStorage.removeItem(USER)
     window.localStorage.setItem(USER, JSON.stringify(user))
+    console.log("Received User: ", user)
   }
 
   static getUserId(): string {
@@ -28,12 +30,12 @@ export class StorageService {
     return user.id
   }
 
-  static getToken() {
+  static getToken(): string | null {
     return window.localStorage.getItem(TOKEN)
   }
 
-  static getUser() {
-    const user = localStorage.getItem(USER)
+  static getUser(): any {
+    const user = window.localStorage.getItem(USER)
     return user ? JSON.parse(user) : null
   }
 

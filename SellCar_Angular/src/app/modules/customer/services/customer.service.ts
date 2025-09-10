@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {StorageService} from '../../../auth/services/storage/storage.service';
 
-const BASIC_URL = ["http://localhost:8080"]
+const BASIC_URL = "http://localhost:8080"
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +19,13 @@ export class CustomerService {
   }
 
   getCarById(carId: number):Observable<any> {
-    return this.http.get(BASIC_URL+"/api/customer/car/" + carId, {
+    return this.http.get(BASIC_URL+`/api/customer/car/${carId}`, {
       headers: this.createAuthorizationHeader()
     })
   }
 
-  bookACar(bookACarDto: any):Observable<any> {
-    return this.http.get(BASIC_URL+"/api/customer/car/" + bookACarDto, {
+  bookACar(carId: any, bookACarDto: any):Observable<any> {
+    return this.http.get(BASIC_URL+`/api/customer/car/book/${carId}` + bookACarDto, {
       headers: this.createAuthorizationHeader()
     })
   }
@@ -43,10 +43,9 @@ export class CustomerService {
   }
 
   createAuthorizationHeader(): HttpHeaders {
-    let authHeaders: HttpHeaders = new HttpHeaders()
-    return authHeaders.set(
-      'Authorization',
-      'Bearer ' + StorageService.getToken()
-    )
+    const token = StorageService.getToken()
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
   }
 }

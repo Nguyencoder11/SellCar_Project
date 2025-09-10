@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean bookACar(BookACarDto bookACarDto) {
+    public boolean bookACar(Long carId, BookACarDto bookACarDto) {
         Optional<Car> optionalCar = carRepository.findById(bookACarDto.getCarId());
         Optional<User> optionalUser = userRepository.findById(bookACarDto.getUserId());
         if (optionalCar.isPresent() && optionalUser.isPresent()) {

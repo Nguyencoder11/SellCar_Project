@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {AdminService} from '../../services/admin.service';
-import {NgForOf} from '@angular/common';
+import {CommonModule, NgForOf} from '@angular/common';
 import {NzColDirective, NzRowDirective} from 'ng-zorro-antd/grid';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzMessageService} from 'ng-zorro-antd/message';
@@ -14,7 +14,8 @@ import {Router, RouterLink} from '@angular/router';
     NzRowDirective,
     NzColDirective,
     NzButtonComponent,
-    RouterLink
+    RouterLink,
+    CommonModule,
   ],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.scss'

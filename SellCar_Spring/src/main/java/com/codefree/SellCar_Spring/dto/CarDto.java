@@ -9,13 +9,13 @@ import java.util.Date;
 public class CarDto {
     private Long id;
     private String brand;
-    private String color;
     private String name;
     private String type;
     private String transmission;
-    private String description;
-    private Long price;
+    private String color;
     private Date year;
+    private Long price;
+    private String description;
     private MultipartFile image;
     private byte[] returnedImage;
 }

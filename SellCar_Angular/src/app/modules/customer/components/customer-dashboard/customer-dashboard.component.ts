@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {CustomerService} from '../../services/customer.service';
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {NgForOf} from '@angular/common';
+import {CommonModule, NgForOf} from '@angular/common';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzColDirective, NzRowDirective} from 'ng-zorro-antd/grid';
 import {RouterLink} from '@angular/router';
@@ -14,7 +14,8 @@ import {RouterLink} from '@angular/router';
     NzButtonComponent,
     NzColDirective,
     NzRowDirective,
-    RouterLink
+    RouterLink,
+    CommonModule
   ],
   templateUrl: './customer-dashboard.component.html',
   styleUrl: './customer-dashboard.component.scss'

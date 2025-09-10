@@ -6,9 +6,7 @@ export const routes: Routes = [
   // { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "register", component: SignupComponent },
   { path: "login", component: LoginComponent },
-  { path: "amin", loadChildren: () => import("./modules/admin/admin.module").then(m => m.AdminModule) },
-  { path: "amin", loadChildren: () => import("./modules/customer/customer.module").then(m => m.CustomerModule) },
-
-
+  { path: "admin", loadChildren: () => import("./modules/admin/admin.module").then(m => m.AdminModule) },
+  { path: "customer", loadChildren: () => import("./modules/customer/customer.module").then(m => m.CustomerModule) },
 ];
 

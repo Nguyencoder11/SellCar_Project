@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {CustomerService} from '../../services/customer.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {NgForOf, NgIf} from '@angular/common';
+import {CommonModule, NgForOf, NgIf} from '@angular/common';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzColDirective, NzRowDirective} from 'ng-zorro-antd/grid';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -24,7 +24,8 @@ import {NzMessageService} from 'ng-zorro-antd/message';
     NzSpinComponent,
     ReactiveFormsModule,
     NzFormLabelComponent,
-    NzDatePickerComponent
+    NzDatePickerComponent,
+    CommonModule
   ],
   templateUrl: './book-car.component.html',
   styleUrl: './book-car.component.scss'
@@ -36,7 +37,7 @@ export class BookCarComponent {
   processedImage: any
   validateForm!: FormGroup
   isSpinning: boolean = false
-  dateFormat!: "DD-MM-yyyy"
+  dateFormat!: "DD-MM-YYYY"
 
   constructor(private service: CustomerService,
               private activatedRoute: ActivatedRoute,
@@ -64,14 +65,14 @@ export class BookCarComponent {
 
   bookACar(data: any) {
     console.log(data)
-    this.isSpinning = false
+    this.isSpinning = true
     let bookACarDto = {
       toDate: data.toDate,
       fromDate: data.fromDate,
       userId: StorageService.getUserId(),
       carId: this.carId
     }
-    this.service.bookACar(bookACarDto).subscribe((res) => {
+    this.service.bookACar(this.carId, bookACarDto).subscribe((res) => {
       console.log(res)
       this.message.success("Booking request submitted successfully", {nzDuration: 5000})
       this.router.navigateByUrl("/customer/dashboard")
